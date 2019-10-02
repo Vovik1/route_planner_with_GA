@@ -3,7 +3,7 @@ import urllib.request, urllib.parse, urllib.error
 import json
 import ssl
 
-api_key = 'AIzaSyDmGpnn3txIZQlDrCKzo53Y8jgXEced3Hg'
+api_key = 'YOUR_API_KEY'
 serviceurl = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 
 # Ignore SSL certificate errors
