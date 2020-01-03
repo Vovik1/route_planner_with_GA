@@ -1,78 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions Service</title>
-    <style>
+</head>
 
-      #map {
-        height: 500px;
-        width: 1000px;
-      }
+<body>
 
-
-    </style>
-  </head>
-  <body>
-
-
-    <div id="map"></div>
+    <div id="map" style="height: 500px; width: 1000px;"></div>
     <button id="get">Get Direction</button>
-    <script>
-      function initMap() {
-        var directionsService = new google.maps.DirectionsService();
-        var directionsDisplay = new google.maps.DirectionsRenderer();
 
-        var waypoints = [];
 
-        var request = {};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {lat: 49.83826, lng: 24.02324}
-        });
-        directionsDisplay.setMap(map);
-
-        function calculateRoute(){
-
-          for( pos in myData){
-            var addit_dict = {};
-            var row = myData[pos];
-            var newLatlng = new google.maps.LatLng(row[0], row[1]);
-            if (pos == 0){
-              request["origin"] = newLatlng;}
-            else if (pos == myData.length -1){
-              request["destination"] = newLatlng;}
-            else {
-              addit_dict["location"] = newLatlng;
-              addit_dict["stopover"] = true;
-              waypoints.push(addit_dict);
-              }
-          }
-          request["waypoints"] = waypoints;
-          request["travelMode"] = 'DRIVING';
-
-            directionsService.route(request,function(result,status){
-                if (status == 'OK'){
-                  directionsDisplay.setDirections(result);
-                  }
-                else {
-                window.alert('Directions request failed due to ' + status);
-                  }
-
-            });
-        }
-
-        document.getElementById('get').onclick= function(){
-          calculateRoute();
-          };
-
-      }
+    <script src="script.js"></script>
+    <script src="where.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmGpnn3txIZQlDrCKzo53Y8jgXEced3Hg&callback=initMap">
     </script>
-     <script src="where.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
-  </body>
+
+</body>
+
 </html>
